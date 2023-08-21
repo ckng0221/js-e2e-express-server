@@ -4,18 +4,33 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+  - main
 
 pool:
   name: CK-macOS
 
-steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '18.x'
-    displayName: 'Install Node.js'
-
-  - script: |
-      npm install
-      npm run build
-    displayName: 'npm install and build'
+stages:
+  - stage: test
+    jobs:
+      - job: unittest
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+          - script: |
+              npm ci
+              npm run test
+            displayName: 'Run unit tests'
+  - stage: build
+    jobs:
+      - job: buildArtifact
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+          - script: |
+              npm install --omit=dev
+              npm run build
+            displayName: 'Run build'
