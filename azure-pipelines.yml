@@ -31,6 +31,6 @@ stages:
               versionSpec: '18.x'
             displayName: 'Install Node.js'
           - script: |
-              npm install --omit=dev
+              npm install
               npm run build
             displayName: 'Run build'
