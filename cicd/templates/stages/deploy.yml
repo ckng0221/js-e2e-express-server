@@ -6,11 +6,11 @@ stages:
   # Not actual deploy, for POC only
   - ${{ each region in parameters.hosting_regions }}:
       - stage: deploy_${{ region }}
-        dependsOn: test
+        dependsOn: build
         jobs:
           - job:
             steps:
               - checkout: none
               - script: |
-                  echo "Deploying app to ${{ region }}" done
-                  echo "Deployed app.
+                  echo "Deploying app to ${{ region }}"
+                  echo "Deployed app."
