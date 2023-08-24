@@ -1,0 +1,13 @@
+stages:
+  - stage: build
+    jobs:
+      - job: buildArtifact
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+          - script: |
+              npm install
+              npm run build
+            displayName: 'Run build'

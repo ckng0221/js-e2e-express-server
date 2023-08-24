@@ -9,28 +9,18 @@ trigger:
 pool:
   name: CK-macOS
 
+parameters:
+  - name: hosting_regions
+    type: object
+    default:
+      - southeastasia
+      - japaneast
+
 stages:
-  - stage: test
-    jobs:
-      - job: unittest
-        steps:
-          - task: NodeTool@0
-            inputs:
-              versionSpec: '18.x'
-            displayName: 'Install Node.js'
-          - script: |
-              npm ci
-              npm run test
-            displayName: 'Run unit tests'
-  - stage: build
-    jobs:
-      - job: buildArtifact
-        steps:
-          - task: NodeTool@0
-            inputs:
-              versionSpec: '18.x'
-            displayName: 'Install Node.js'
-          - script: |
-              npm install
-              npm run build
-            displayName: 'Run build'
+  - template: 'cicd/templates/stages/test.yml'
+
+  - template: 'cicd/templates/stages/build.yml'
+
+  - template: 'cicd/templates/stages/deploy.yml'
+    parameters:
+      hosting_regions: ${{ parameters.hosting_regions }}

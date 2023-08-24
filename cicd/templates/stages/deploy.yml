@@ -1,0 +1,16 @@
+parameters:
+  - name: hosting_regions
+    type: object
+
+stages:
+  # Not actual deploy, for POC only
+  - ${{ each region in parameters.hosting_regions }}:
+      - stage: deploy_${{ region }}
+        dependsOn: unittest
+        jobs:
+          - job:
+            steps:
+              - checkout: none
+              - script: |
+                  echo "Deploying app to ${{ region }}" done
+                  echo "Deployed app.
