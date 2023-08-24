@@ -1,4 +1,5 @@
 [![Build Status](https://dev.azure.com/ngchoonkhon/Trials/_apis/build/status%2Fckng0221.js-e2e-express-server?branchName=main)](https://dev.azure.com/ngchoonkhon/Trials/_build/latest?definitionId=9&branchName=main)
+[![.github/workflows/cicd.yml](https://github.com/ckng0221/js-e2e-express-server/actions/workflows/cicd.yml/badge.svg)](https://github.com/ckng0221/js-e2e-express-server/actions/workflows/cicd.yml)
 ---
 page_type: sample
 languages:
