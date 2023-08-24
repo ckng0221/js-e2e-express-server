@@ -30,3 +30,4 @@ stages:
   - template: 'cicd/templates/stages/deploy-prod.yml'
     parameters:
       hosting_regions: ${{ parameters.hosting_regions }}
+      agent_pool: ${{ parameters.agent_pool }}

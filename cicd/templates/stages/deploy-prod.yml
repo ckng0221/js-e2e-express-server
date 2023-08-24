@@ -7,7 +7,7 @@ parameters:
 stages:
   # Not actual deploy, for POC only
   - ${{ each region in parameters.hosting_regions }}:
-      - stage: deploy_staging
+      - stage: deploy_prod_${{ region }}
         dependsOn: deploy_staging
         jobs:
           - deployment: deploy_prod_$${{ region }}
