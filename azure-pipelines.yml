@@ -2,19 +2,21 @@
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
-trigger:
-  - main
-
-pool:
-  name: CK-macOS
-
 parameters:
   - name: hosting_regions
     type: object
     default:
       - southeastasia
       - japaneast
+  - name: agent_pool
+    type: string
+    default: CK-macOS
+
+trigger:
+  - main
+
+pool:
+  name: ${{ parameters.agent_pool }}
 
 stages:
   - template: 'cicd/templates/stages/test.yml'
@@ -22,6 +24,8 @@ stages:
   - template: 'cicd/templates/stages/build.yml'
 
   - template: 'cicd/templates/stages/deploy-staging.yml'
+    parameters:
+      agent_pool: ${{ parameters.agent_pool }}
 
   - template: 'cicd/templates/stages/deploy-prod.yml'
     parameters:

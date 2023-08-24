@@ -1,15 +1,23 @@
+parameters:
+  - name: agent_pool
+    type: string
+
+# Not actual deploy, for POC only
 stages:
-  # Not actual deploy, for POC only
   - stage: deploy_staging
     dependsOn: build
     jobs:
       - deployment: deploy_staging
-        displayName: Deploy to staging environment
+        displayName: deploy staging
+        pool:
+          name: ${{ parameters.agent_pool }}
+
+        environment: 'staging-env'
         strategy:
           runOnce:
             deploy:
               steps:
                 - checkout: none
                 - script: |
-                    echo "Deploying app to staging"
-                    echo "Deployed app."
+                    echo 'Deploying to staging'
+                    echo 'Done deployment'
