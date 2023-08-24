@@ -11,7 +11,6 @@ stages:
         displayName: deploy staging
         pool:
           name: ${{ parameters.agent_pool }}
-
         environment: 'staging-env'
         strategy:
           runOnce:

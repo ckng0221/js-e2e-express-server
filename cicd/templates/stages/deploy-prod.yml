@@ -1,16 +1,25 @@
 parameters:
   - name: hosting_regions
     type: object
+  - name: agent_pool
+    type: string
 
 stages:
   # Not actual deploy, for POC only
   - ${{ each region in parameters.hosting_regions }}:
-      - stage: deploy_prod_${{ region }}
+      - stage: deploy_staging
         dependsOn: deploy_staging
         jobs:
-          - job:
-            steps:
-              - checkout: none
-              - script: |
-                  echo "Deploying app to prod ${{ region }}"
-                  echo "Deployed app."
+          - deployment: deploy_prod_$${{ region }}
+            displayName: deploy prod ${{ region}}
+            pool:
+              name: ${{ parameters.agent_pool }}
+            environment: 'staging-prod'
+            strategy:
+              runOnce:
+                deploy:
+                  steps:
+                    - checkout: none
+                    - script: |
+                        echo "Deploying app to prod ${{ region }}"
+                        echo "Deployed app."
