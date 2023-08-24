@@ -6,7 +6,7 @@ stages:
   # Not actual deploy, for POC only
   - ${{ each region in parameters.hosting_regions }}:
       - stage: deploy_${{ region }}
-        dependsOn: unittest
+        dependsOn: test
         jobs:
           - job:
             steps:
