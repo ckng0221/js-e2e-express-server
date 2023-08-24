@@ -5,7 +5,6 @@ stages:
     jobs:
       - deployment: deploy_staging
         displayName: Deploy to staging environment
-        environment: staging
         strategy:
           runOnce:
             deploy:
