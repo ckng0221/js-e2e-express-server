@@ -3,9 +3,14 @@ stages:
   - stage: deploy_staging
     dependsOn: build
     jobs:
-      - job:
-        steps:
-          - checkout: none
-          - script: |
-              echo "Deploying app to staging"
-              echo "Deployed app."
+      - deployment: deploy_staging
+        displayName: Deploy to staging environment
+        environment: staging
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: none
+                - script: |
+                    echo "Deploying app to staging"
+                    echo "Deployed app."
