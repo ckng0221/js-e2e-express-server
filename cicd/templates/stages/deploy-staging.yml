@@ -1,0 +1,11 @@
+stages:
+  # Not actual deploy, for POC only
+  - stage: deploy_staging
+    dependsOn: build
+    jobs:
+      - job:
+        steps:
+          - checkout: none
+          - script: |
+              echo "Deploying app to staging"
+              echo "Deployed app."

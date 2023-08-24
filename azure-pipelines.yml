@@ -21,6 +21,8 @@ stages:
 
   - template: 'cicd/templates/stages/build.yml'
 
-  - template: 'cicd/templates/stages/deploy.yml'
+  - template: 'cicd/templates/stages/deploy-staging.yml'
+
+  - template: 'cicd/templates/stages/deploy-prod.yml'
     parameters:
       hosting_regions: ${{ parameters.hosting_regions }}
