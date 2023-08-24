@@ -10,11 +10,11 @@ stages:
       - stage: deploy_prod_${{ region }}
         dependsOn: deploy_staging
         jobs:
-          - deployment: deploy_prod_$${{ region }}
-            displayName: deploy prod ${{ region}}
+          - deployment: deploy_prod_${{ region }}
+            displayName: deploy prod ${{ region }}
             pool:
               name: ${{ parameters.agent_pool }}
-            environment: 'staging-prod'
+            environment: 'prod-env'
             strategy:
               runOnce:
                 deploy:
