@@ -16,7 +16,7 @@ trigger:
   - main
 
 pool:
-  name: ${{ parameters.agent_pool }}
+  name: CK-macOS
 
 stages:
   - template: 'cicd/templates/stages/test.yml'
