@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/ngchoonkhon/Trials/_apis/build/status%2Fckng0221.js-e2e-express-server?branchName=main)](https://dev.azure.com/ngchoonkhon/Trials/_build/latest?definitionId=9&branchName=main)
 ---
 page_type: sample
 languages:
