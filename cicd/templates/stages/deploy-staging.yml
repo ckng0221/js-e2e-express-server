@@ -22,7 +22,7 @@ stages:
           runOnce:
             deploy:
               steps:
-                - checkout: self
+                - checkout: none
                 # - script: |
                 #     echo 'Deploying to staging'
                 #     echo 'Done deployment'
