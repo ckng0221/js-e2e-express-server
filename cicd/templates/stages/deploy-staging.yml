@@ -32,5 +32,5 @@ stages:
                     azureSubscription: ${{ parameters.azure_susbscription }}
                     appType: 'webApp'
                     WebAppName: ${{ parameters.web_app_name }}
-                    ResourceGroupName: ${{ parameters.resourceGroupName }}
+                    ResourceGroupName: ${{ parameters.resource_group_name }}
                     DeploymentType: 'webDeploy'
