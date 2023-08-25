@@ -11,6 +11,12 @@ parameters:
   - name: agent_pool
     type: string
     default: CK-macOS
+  - name: azure_susbscription
+    type: string
+    default: Azure subscription 1
+  - name: web_app_name
+    type: string
+    default: cicd-ckckck-app
 
 trigger:
   - main
@@ -31,3 +37,5 @@ stages:
     parameters:
       hosting_regions: ${{ parameters.hosting_regions }}
       agent_pool: ${{ parameters.agent_pool }}
+      azure_susbscription: ${{ parameters.azure_susbscription }}
+      web_app_name: ${{ parameters.web_app_name }}

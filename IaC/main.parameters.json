@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "webAppName": {
-      "value": "cicd-ckck-app"
+      "value": "cicd-ckckck-app"
     },
     "sku": {
       "value": "F1"

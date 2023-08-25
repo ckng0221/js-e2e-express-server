@@ -5,7 +5,8 @@ param location string = resourceGroup().location // Location for all resources
 param repositoryUrl string = 'https://github.com/ckng0221/js-e2e-express-server'
 param branch string = 'main'
 var appServicePlanName = toLower('AppServicePlan-${webAppName}')
-var webSiteName = toLower('wapp-${webAppName}')
+// var webSiteName = toLower('wapp-${webAppName}')
+var webSiteName = webAppName
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: appServicePlanName
@@ -30,6 +31,7 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
   }
 }
 
+// To connect with your repo. (Optional)
 resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
   parent: appService
   name: 'web'
