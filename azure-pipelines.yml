@@ -3,6 +3,9 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 parameters:
+  - name: resource_group_name
+    type: string
+    default: cicdResourceGroup
   - name: hosting_regions
     type: object
     default:
@@ -31,10 +34,14 @@ stages:
 
   - template: 'cicd/templates/stages/deploy-staging.yml'
     parameters:
+      resource_group_name: ${{ parameters.resource_group_name }}
       agent_pool: ${{ parameters.agent_pool }}
+      azure_susbscription: ${{ parameters.azure_susbscription }}
+      web_app_name: ${{ parameters.web_app_name }}
 
   - template: 'cicd/templates/stages/deploy-prod.yml'
     parameters:
+      resource_group_name: ${{ parameters.resource_group_name }}
       hosting_regions: ${{ parameters.hosting_regions }}
       agent_pool: ${{ parameters.agent_pool }}
       azure_susbscription: ${{ parameters.azure_susbscription }}

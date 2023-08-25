@@ -1,4 +1,6 @@
 parameters:
+  - name: resource_group_name
+    type: string
   - name: hosting_regions
     type: object
   - name: agent_pool
@@ -23,13 +25,7 @@ stages:
               runOnce:
                 deploy:
                   steps:
-                    # - checkout: none
-                    # - script: |
-                    #     echo "Deploying app to prod ${{ region }}"
-                    #     echo "Deployed app."
-                    - task: AzureRmWebAppDeployment@4
-                      inputs:
-                        ConnectionType: 'AzureRM'
-                        azureSubscription: ${{ parameters.azure_susbscription }}
-                        appType: 'webApp'
-                        WebAppName: ${{ parameters.web_app_name }}
+                    - checkout: none
+                    - script: |
+                        echo "Deploying app to prod ${{ region }}"
+                        echo "Deployed app."
