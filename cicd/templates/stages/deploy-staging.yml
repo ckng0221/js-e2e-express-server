@@ -8,7 +8,6 @@ parameters:
   - name: web_app_name
     type: string
 
-# Not actual deploy, for POC only
 stages:
   - stage: deploy_staging
     dependsOn: build
@@ -22,24 +21,27 @@ stages:
           runOnce:
             deploy:
               steps:
-                # - checkout: none
-                # - script: |
-                #     echo 'Deploying to staging'
-                #     echo 'Done deployment'
-                # - task: AzureRmWebAppDeployment@4
-                #   inputs:
-                #     ConnectionType: 'AzureRM'
-                #     azureSubscription: ${{ parameters.azure_susbscription }}
-                #     appType: 'webApp'
-                #     WebAppName: ${{ parameters.web_app_name }}
-                #     ResourceGroupName: ${{ parameters.resource_group_name }}
-                #     DeploymentType: 'webDeploy'
-                - task: AzureWebApp@1
-                  displayName: 'Azure Web App Deploy: nodejs-cicd-16353'
+                # Not actual deploy, for POC only
+                - checkout: none
+                - script: |
+                    echo 'Deploying to staging'
+                    echo 'Done deployment'
+                - task: AzureRmWebAppDeployment@4
                   inputs:
+                    ConnectionType: 'AzureRM'
                     azureSubscription: ${{ parameters.azure_susbscription }}
-                    appType: webAppLinux
-                    appName: ${{ parameters.web_app_name }}
-                    runtimeStack: 'NODE|18-lts'
-                    package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-                    startUpCommand: 'npm run start'
+                    appType: 'webApp'
+                    WebAppName: ${{ parameters.web_app_name }}
+                    ResourceGroupName: ${{ parameters.resource_group_name }}
+                    DeploymentType: 'webDeploy'
+
+                # Actual deployment
+                # - task: AzureWebApp@1
+                #   displayName: 'Azure Web App Deploy: nodejs-cicd-16353'
+                #   inputs:
+                #     azureSubscription: ${{ parameters.azure_susbscription }}
+                #     appType: webAppLinux
+                #     appName: ${{ parameters.web_app_name }}
+                #     runtimeStack: 'NODE|18-lts'
+                #     package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+                #     startUpCommand: 'npm run start'
