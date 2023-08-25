@@ -1,8 +1,6 @@
 parameters:
   - name: resource_group_name
     type: string
-  - name: hosting_regions
-    type: object
   - name: agent_pool
     type: string
   - name: azure_susbscription
