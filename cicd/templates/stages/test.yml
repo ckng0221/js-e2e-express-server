@@ -11,3 +11,5 @@ stages:
               npm ci
               npm run test
             displayName: 'Run unit tests'
+          - script: |
+              echo ${{ var.customvar }}

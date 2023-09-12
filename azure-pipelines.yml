@@ -21,6 +21,10 @@ parameters:
     type: string
     default: cicd-ckckck-app
 
+variables:
+  - name: customvar
+    value: 'SuccessfulVar'
+
 trigger:
   - main
 
