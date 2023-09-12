@@ -23,7 +23,7 @@ parameters:
 
 variables:
   - name: custom
-    value: okay
+    value: trial-@ENV@ß
 
 trigger:
   - main
