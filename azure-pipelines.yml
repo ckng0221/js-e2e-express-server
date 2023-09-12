@@ -22,8 +22,8 @@ parameters:
     default: cicd-ckckck-app
 
 variables:
-  - name: one
-    value: initialValue
+  - name: custom
+    value: okay
 
 trigger:
   - main
