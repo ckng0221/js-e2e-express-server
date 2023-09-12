@@ -14,4 +14,4 @@ stages:
           - script: |
               echo ${{ variables.custom }}
               echo $(custom)
-            displayName: 'Check custom script"
+            displayName: 'Check custom script'
