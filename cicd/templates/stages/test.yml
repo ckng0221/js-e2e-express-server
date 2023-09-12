@@ -12,4 +12,5 @@ stages:
               npm run test
             displayName: 'Run unit tests'
           - script: |
-              echo ${{ variables.customvar }}
+              echo ${{ variables.one }} # outputs initialValue
+              echo $(one)
