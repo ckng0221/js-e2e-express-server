@@ -4,11 +4,10 @@ parameters:
 
 stages:
   - stage: test
-    
     jobs:
       - job: unittest
-      pool:
-        name: ${{ parameters.agent_pool }}
+        pool:
+          name: ${{ parameters.agent_pool }}
         steps:
           - task: NodeTool@0
             inputs:
