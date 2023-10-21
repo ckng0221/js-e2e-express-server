@@ -33,8 +33,12 @@ trigger:
 
 stages:
   - template: 'cicd/templates/stages/test.yml'
+    parameters:
+      agent_pool: ${{ parameters.agent_pool }}
 
   - template: 'cicd/templates/stages/build.yml'
+    parameters:
+      agent_pool: ${{ parameters.agent_pool }}
 
   - template: 'cicd/templates/stages/deploy-staging.yml'
     parameters:
