@@ -8,7 +8,7 @@ stages:
     jobs:
       - job: unittest
       pool:
-        vmImage: ${{ parameters.agent_pool }}
+        name: ${{ parameters.agent_pool }}
         steps:
           - task: NodeTool@0
             inputs:
