@@ -28,8 +28,8 @@ variables:
 trigger:
   - main
 
-pool:
-  name: ${{ parameters.agent_pool }}
+# pool:
+#   name: default
 
 stages:
   - template: 'cicd/templates/stages/test.yml'
