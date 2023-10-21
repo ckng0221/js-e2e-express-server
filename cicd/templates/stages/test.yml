@@ -1,7 +1,14 @@
+parameters:
+  - name: agent_pool
+    type: string
+
 stages:
   - stage: test
+    
     jobs:
       - job: unittest
+      pool:
+        vmImage: ${{ parameters.agent_pool }}
         steps:
           - task: NodeTool@0
             inputs:
