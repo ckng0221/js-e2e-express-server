@@ -13,7 +13,7 @@ parameters:
       - japaneast
   - name: agent_pool
     type: string
-    default: CK-macOS
+    default: default
   - name: azure_susbscription
     type: string
     default: Azure subscription 1
@@ -23,13 +23,13 @@ parameters:
 
 variables:
   - name: custom
-    value: trial-@ENV@ß
+    value: trial-@ENV@
 
 trigger:
   - main
 
 pool:
-  name: CK-macOS
+  name: ${{ parameters.agent_pool }}
 
 stages:
   - template: 'cicd/templates/stages/test.yml'
