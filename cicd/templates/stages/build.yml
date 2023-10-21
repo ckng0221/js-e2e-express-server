@@ -1,7 +1,13 @@
+parameters:
+  - name: agent_pool
+    type: string
+
 stages:
   - stage: build
     jobs:
       - job: buildArtifact
+        pool:
+          name: ${{ parameters.agent_pool }}
         steps:
           - task: NodeTool@0
             inputs:
